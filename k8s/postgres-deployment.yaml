@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: postgres-db
+  name: postgres-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres-db
+      id: "0"
+  strategy: { }
+  template:
+    metadata:
+      labels:
+        app: postgres-db
+        id: "0"
+    spec:
+      containers:
+        - image: postgres:latest
+          name: kafka-consumer
+          env:
+            - name: POSTGRES_DB
+              value: kafka-topic
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_PASSWORD
+              value: postgres
+status: { }

@@ -1,0 +1,21 @@
+consumer:
+  bot:
+    token:
+      ${bot-token:5985835126:AAFuu_qlP0StK7Jx49Fkyp97Nh1aaHVPiSE}
+spring:
+  kafka:
+    bootstrap-servers:
+      ${kafka-bootstrap-server:kafka-service:9092}
+    concurrency:
+      ${consumer-concurrency:3}
+max-retry:
+  ${max-event-retry:3}
+topics:
+  main:
+    ${basic-topic:kafka-test-topic}
+  retry:
+    ${retry-topic:${topics.main}-retry}
+  dlq:
+    ${dlq-topic:${topics.main}-dlq}
+  event-back:
+    ${event-back-topic:${topics.main}-back}

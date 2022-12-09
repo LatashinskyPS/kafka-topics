@@ -1,0 +1,29 @@
+spring:
+  kafka:
+    bootstrap-servers:
+      "kafka-service:9092"
+    concurrency:
+      ${consumer-concurrency:3}
+  datasource:
+    url: jdbc:postgresql://postgres-db-service:5432/kafka-topic
+    username: postgres
+    password: postgres
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+    show-sql: false
+    generate-ddl: false
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto:
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+  liquibase:
+    change-log: classpath:changelog.xml
+    enabled: true
+topics:
+  main:
+    ${basic-topic:kafka-test-topic}
+  event-back:
+    ${event-back-topic:${topics.main}-back}
