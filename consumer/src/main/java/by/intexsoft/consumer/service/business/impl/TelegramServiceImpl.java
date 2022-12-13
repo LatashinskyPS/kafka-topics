@@ -29,6 +29,7 @@ public class TelegramServiceImpl implements TelegramService {
             return telegramClient.sendMessage(botToken, messageDTO.getChatId(), messageDTO.getMessage());
         } catch (Exception e) {
             kafkaService.pause(3);
+            log.error(e.getMessage(), e);
             throw e;
         }
     }

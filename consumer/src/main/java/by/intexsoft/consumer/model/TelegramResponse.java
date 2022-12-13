@@ -19,4 +19,6 @@ public class TelegramResponse {
 
     @JsonProperty("error_code")
     private Long errorCode;
+
+    private ParametersDTO parameters;
 }

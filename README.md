@@ -19,10 +19,10 @@
 
 ### Start with base settings:
 
-    $ git clone 
+    $ git clone https://github.com/LatashinskyPS/kafka-topics.git
     $ kind create cluster
     $ kubectl cluster-info
-    $ cd 
+    $ cd kafka-topics
     $ /bin/bash k8s-load.sh 
     $ kubectl apply -f ./k8s
     $ kubectl get all -A
